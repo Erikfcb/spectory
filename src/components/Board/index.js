@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./Board.css";
 
-// This is a new-changes branch
 class Board extends Component {
   constructor(props) {
     super(props);
