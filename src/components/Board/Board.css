@@ -1,0 +1,70 @@
+.board {
+  width: 882px;
+  margin: 100px auto;
+  display: flex;
+  flex-wrap: wrap;
+  border: 5px solid rgb(50, 49, 49);
+  background-image: url("https://images.unsplash.com/32/Mc8kW4x9Q3aRR3RkP5Im_IMG_4417.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80");
+}
+
+.board td {
+  border: 2px solid rgb(50, 49, 49);
+  /* width: 14.28%;
+  height: 110px; */
+}
+
+.spot {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border-radius: 50%;
+  background-color: rgba(203, 203, 203, 0.44);
+  overflow: hidden;
+  cursor: pointer;  
+}
+
+.light {
+  background-image: url("https://images.unsplash.com/photo-1520588882256-7084d04976a5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2251&q=80");
+  background-size: cover;
+  border: 2px solid rgb(230, 230, 230);
+  width: 96px;
+  height: 96px;
+  transform: rotate(90deg);
+}
+
+.dark {
+  background-image: url("https://images.unsplash.com/photo-1513968917887-08e7f67dfb3f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2248&q=80");
+  background-size: cover;
+  border: 2px solid rgb(33, 33, 33);
+  width: 96px;
+  height: 96px;
+}
+
+.playable {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  font-size: 90px;
+  color: rgb(244, 244, 244);
+}
+
+.insert {
+  animation-name: insert;
+  animation-duration: 1s;
+}
+
+@keyframes insert {
+  0% {
+    opacity: 0;
+  }
+  1% {
+    margin-top: -100vh;
+  }
+  2% {
+    opacity: 1;
+  }
+  100% {
+    margin-top: 0;
+  }
+}
