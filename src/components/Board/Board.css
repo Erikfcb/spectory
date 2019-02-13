@@ -65,6 +65,5 @@
 .turn {
   font-size: 5em;
   color: wheat;
-  width: 25%;
-  margin: 0 auto;
+  text-align: center;
 }
