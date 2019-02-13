@@ -6,7 +6,8 @@ class Board extends Component {
     super(props);
     this.state = {
       board: [],
-      turn: "light"
+      turn: "light",
+      hold: false
     };
 
     this.newGame = this.newGame.bind(this);
@@ -199,36 +200,43 @@ class Board extends Component {
         this.horizontal(sequence) ||
         this.diagonal(sequence))
     )
-      this.props.declare(this.state.turn);
+      setTimeout(() => {
+        this.props.declare(this.state.turn);
+      }, 1000);
   }
 
   changeColor(column) {
-    const rowToPlace = this.lastAvailableRow(column);
-    if (rowToPlace !== -1) {
-      let counter = -1;
-      const board = this.state.board.map((element, index) => {
-        if (index !== rowToPlace) return element;
-        let newRow = element.map(el => {
-          counter++;
-          if (el.column !== column) return el;
+    if (!this.state.hold) {
+      const rowToPlace = this.lastAvailableRow(column);
+      if (rowToPlace !== -1) {
+        let counter = -1;
+        const board = this.state.board.map((element, index) => {
+          if (index !== rowToPlace) return element;
+          let newRow = element.map(el => {
+            counter++;
+            if (el.column !== column) return el;
 
-          return {
-            elementClass: "spot insert " + this.state.turn,
-            selected: this.state.turn,
-            index: this.state.board[rowToPlace][column].index,
-            column: column,
-            row: rowToPlace
-          };
+            return {
+              elementClass: "spot insert " + this.state.turn,
+              selected: this.state.turn,
+              index: this.state.board[rowToPlace][column].index,
+              column: column,
+              row: rowToPlace
+            };
+          });
+
+          return newRow;
         });
 
-        return newRow;
-      });
-
-      this.setState({ board });
-      setTimeout(() => {
-        this.checkWinner();
-        this.nextTurn();
-      }, 100);
+        this.setState({ board, hold: true });
+        setTimeout(() => {
+          this.checkWinner();
+        }, 100);
+        setTimeout(() => {
+          this.setState({ hold: false });
+          this.nextTurn();
+        }, 1200);
+      }
     }
   }
 
