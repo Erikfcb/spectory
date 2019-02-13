@@ -80,7 +80,6 @@ class Board extends Component {
   }
 
   includedAtFirst(arr) {
-    console.log('given array: '+arr)
     // Checks if 'forbidden' numbers appear except first index of an array
     const forbidden = [];
     this.state.board.forEach((element, index) => {
@@ -90,7 +89,7 @@ class Board extends Component {
     let flag = false;
 
     arr.forEach((x, index) => {
-      if (index !== arr.length -1 && forbidden.indexOf(x) !== -1) {
+      if (index !== arr.length - 1 && forbidden.indexOf(x) !== -1) {
         flag = true;
       }
     });
@@ -194,7 +193,6 @@ class Board extends Component {
       });
     });
 
-    console.log(sequence);
     if (
       sequence.length > 3 &&
       (this.vertical(sequence) ||
@@ -226,10 +224,6 @@ class Board extends Component {
         return newRow;
       });
 
-      console.log(this.state.board);
-
-      console.log(board);
-
       this.setState({ board });
       setTimeout(() => {
         this.checkWinner();
@@ -258,13 +252,8 @@ class Board extends Component {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
   render() {
-    // // const arr = [0,7,14,21,28,35]
-    // const arr = [0,2,4,6,8]    
-    // console.log(arr);
-    // console.log(this.includedAtFirst(arr));
-
     const spots = this.getSpots();
-    const turn = this.capitalizeFirstLetter(this.state.turn)
+    const turn = this.capitalizeFirstLetter(this.state.turn);
 
     return [
       <div className="turn">{turn}'s turn</div>,
