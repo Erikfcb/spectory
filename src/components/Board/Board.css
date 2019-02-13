@@ -1,6 +1,6 @@
 .board {
   width: 882px;
-  margin: 100px auto;
+  margin: 10px auto;
   display: flex;
   flex-wrap: wrap;
   border: 5px solid rgb(50, 49, 49);
@@ -33,6 +33,8 @@
   width: 96px;
   height: 96px;
   transform: rotate(90deg);
+  animation-name: insert;
+  animation-duration: 1s;
 }
 
 .dark {
@@ -41,18 +43,6 @@
   border: 2px solid rgb(33, 33, 33);
   width: 96px;
   height: 96px;
-}
-
-.playable {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  user-select: none;
-  font-size: 90px;
-  color: rgb(244, 244, 244);
-}
-
-.insert {
   animation-name: insert;
   animation-duration: 1s;
 }
@@ -70,4 +60,11 @@
   100% {
     margin-top: 0;
   }
+}
+
+.turn {
+  font-size: 5em;
+  color: wheat;
+  width: 25%;
+  margin: 0 auto;
 }
