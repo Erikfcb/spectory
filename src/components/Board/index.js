@@ -8,7 +8,7 @@ class Board extends Component {
       board: [],
       turn: "light"
     };
-    
+
     this.newGame = this.newGame.bind(this);
     this.changeColor = this.changeColor.bind(this);
     this.nextTurn = this.nextTurn.bind(this);
@@ -23,35 +23,23 @@ class Board extends Component {
   newGame() {
     const newBoard = [];
     let counter = 0;
-    let row = [];
 
     for (let i = 0; i < 6; i++) {
+      const row = [];
       for (let j = 0; j < 7; j++) {
-        if (counter >= 35)
-          row.push({
-            element: (
-              <td onClick={() => this.changeColor(j)}>
-                <div className="spot playable material-icons " key={counter}>
-                  add_circle
-                </div>
-              </td>
-            ),
-            selected: ""
-          });
-        else
-          row.push({
-            element: (
-              <td onClick={() => this.changeColor(j)}>
-                <div className="spot" key={counter} />
-              </td>
-            ),
-            selected: ""
-          });
-
+        row.push({
+          element: (
+            <td onClick={() => this.changeColor(j)}>
+              <div className="spot" key={counter}>
+                {counter}
+              </div>
+            </td>
+          ),
+          selected: ""
+        });
         counter++;
       }
       newBoard.push(row);
-      row = [];
     }
     this.setState({
       board: newBoard
@@ -107,18 +95,6 @@ class Board extends Component {
           />
         </td>
       );
-      if (rowToPlace >= 1)
-        // set the spot above as the next spot to place your move
-        this.state.board[rowToPlace - 1][column].element = (
-          <td onClick={() => this.changeColor(column)}>
-            <div
-              className={"spot playable material-icons "}
-              key={(rowToPlace - 1) * column}
-            >
-              add_circle
-            </div>
-          </td>
-        );
 
       this.state.board[rowToPlace][column].selected = this.state.turn;
       this.checkWinner();

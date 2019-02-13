@@ -14,13 +14,16 @@
 }
 
 .spot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100px;
   height: 100px;
   margin: 10px;
   border-radius: 50%;
   background-color: rgba(203, 203, 203, 0.44);
   overflow: hidden;
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 .light {
