@@ -12,8 +12,6 @@
 .board td {
   border: 0.1vw solid rgb(50, 49, 49);  
   padding: 0;
-  /* width: 14.28%;
-  height: 110px; */
 }
 
 .spot {
@@ -36,7 +34,6 @@ td:hover .spot {
 .light {
   background-image: url("https://images.unsplash.com/photo-1520588882256-7084d04976a5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2251&q=80");
   background-size: cover;
-  /* border: 0.2vw solid rgb(230, 230, 230); */
   width: 4vw;
   height: 4vw;
   transform: rotate(90deg);
@@ -47,7 +44,6 @@ td:hover .spot {
 .dark {
   background-image: url("https://images.unsplash.com/photo-1513968917887-08e7f67dfb3f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2248&q=80");
   background-size: cover;
-  /* border: 0.2vw solid rgb(33, 33, 33); */
   width: 4vw;
   height: 4vw;
   animation-name: insert;

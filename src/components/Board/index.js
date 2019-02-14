@@ -110,13 +110,13 @@ class Board extends Component {
       if (arr.length - index > 3)
         while (gap <= rowLength) {
           gap = arr[index + 1] - arr[root];
-          if (gap == rowLength) {
+          if (gap === rowLength) {
             sequenceLength++;
             root = index + 1;
           }
           index++;
         }
-      if (sequenceLength == 3) found = true;
+      if (sequenceLength === 3) found = true;
     });
 
     return found;
@@ -129,8 +129,8 @@ class Board extends Component {
       let sequence = [num];
       let gap = arr[index + 1] - num;
 
-      while (gap == 1) {
-        if (gap == 1) {
+      while (gap === 1) {
+        if (gap === 1) {
           sequence.push(arr[index + 1]);
           index++;
           num++;
@@ -138,7 +138,7 @@ class Board extends Component {
         gap = arr[index + 1] - num;
       }
 
-      if (sequence.length == 4 && !this.includedAtLast(sequence)) found = true;
+      if (sequence.length === 4 && !this.includedAtLast(sequence)) found = true;
     });
     return found;
   }
@@ -156,13 +156,13 @@ class Board extends Component {
       if (arr.length - index > 3)
         while (gap <= bigGap) {
           gap = arr[index + 1] - arr[root];
-          if (gap == bigGap) {
+          if (gap === bigGap) {
             sequence.push(arr[index + 1]);
             root = index + 1;
           }
           index++;
         }
-      if (sequence.length == 4 && !this.includedAtLast(sequence)) found = true;
+      if (sequence.length === 4 && !this.includedAtLast(sequence)) found = true;
     });
 
     arr.forEach((num, index) => {
@@ -173,13 +173,14 @@ class Board extends Component {
       if (arr.length - index > 3)
         while (gap <= smallGap) {
           gap = arr[index + 1] - arr[root];
-          if (gap == smallGap) {
+          if (gap === smallGap) {
             sequence.push(arr[index + 1]);
             root = index + 1;
           }
           index++;
         }
-      if (sequence.length == 4 && !this.includedAtFirst(sequence)) found = true;
+      if (sequence.length === 4 && !this.includedAtFirst(sequence))
+        found = true;
     });
 
     return found;
@@ -209,11 +210,9 @@ class Board extends Component {
     if (!this.state.hold) {
       const rowToPlace = this.lastAvailableRow(column);
       if (rowToPlace !== -1) {
-        let counter = -1;
         const board = this.state.board.map((element, index) => {
           if (index !== rowToPlace) return element;
           let newRow = element.map(el => {
-            counter++;
             if (el.column !== column) return el;
 
             return {
@@ -246,7 +245,7 @@ class Board extends Component {
     this.state.board.forEach((element, column) => {
       element.forEach(el => {
         arr.push(
-          <td onClick={() => this.changeColor(el.column)}>
+          <td onClick={() => this.changeColor(el.column)} key={el.index}>
             <div className={el.elementClass} key={el.index} />
           </td>
         );

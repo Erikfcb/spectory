@@ -17,7 +17,7 @@ class Home extends Component {
 
   render() {
     const view =
-      this.state.winner === "" ? (
+      this.state.winner === "" ? ( //if theres a winner show board, else show winner
         <Board declare={this.declareWinner} />
       ) : (
         <Winner name={this.state.winner} declare={this.declareWinner} />
